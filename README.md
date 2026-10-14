@@ -39,32 +39,40 @@ Q: What are the benefits of RAG?
 A: RAG improves factual accuracy by retrieving
 relevant context from external knowledge sources
 before generating a response.
-🏗️ System Architecture
-YouTube Video
-      │
-      ▼
+
+🔄 Processing Pipeline
+YouTube URL
+    │
+    ▼
 Audio Download
-      │
-      ▼
-Transcription
-      │
-      ▼
-Text Processing
-      │
-      ▼
-Chunking
-      │
-      ▼
-Embeddings
-      │
-      ▼
-Vector Database
-      │
-      ▼
-Summary Generation
-      │
-      ▼
-RAG-Based Q&A
+(audio_processor.py)
+    │
+    ▼
+Speech-to-Text
+(transcriber.py)
+    │
+    ▼
+Transcript
+    │
+    ▼
+Embedding Creation
+(vector_store.py)
+    │
+    ▼
+Chroma Vector Database
+    │
+    ├────────────► Summarization
+    │              (summarizer.py)
+    │
+    ├────────────► Insight Extraction
+    │              (extractor.py)
+    │
+    └────────────► Question Answering
+                   (rag_engine.py)
+
+                    ▼
+              Final Results
+              
 📂 Project Structure
 VIDEO AGENT/
 │
