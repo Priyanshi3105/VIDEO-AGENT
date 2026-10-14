@@ -1,20 +1,72 @@
 🎥 Video Agent
-An AI-powered video intelligence system that downloads YouTube videos, transcribes audio, generates summaries, extracts insights, and enables question-answering through Retrieval-Augmented Generation (RAG).
+An AI-powered Video Intelligence System that transforms YouTube videos into searchable knowledge.
 
-🚀 Features
+Video Agent automatically downloads video audio, generates transcripts, creates concise summaries, extracts key insights, and enables Retrieval-Augmented Generation (RAG) based question answering over video content.
+
+Built using Python, LangChain, ChromaDB, Whisper, Sarvam AI, and modern LLM workflows.
+
+🌟 Key Features
+📥 Video Processing
 Download audio from YouTube videos
+Support for long-form content such as podcasts, webinars, lectures, and interviews
+Automatic audio extraction and preprocessing
+🎙️ Speech-to-Text
 English transcription using Whisper
 Hindi/Hinglish transcription using Sarvam AI
-AI-generated summaries
-Action item extraction
-Key decision extraction
-Semantic search using vector embeddings
-RAG-based question answering
-Support for long-form video content
+Language-aware transcription pipeline
+📝 AI Summarization
+Generate concise summaries
+Long-video summarization support
+Structured output generation
+🔍 Information Extraction
+Extract:
+
+Key Insights
+Important Takeaways
+Action Items
+Decisions & Recommendations
+🧠 Retrieval Augmented Generation (RAG)
+Intelligent document chunking
+Embedding generation
+ChromaDB vector storage
+Context retrieval
+Natural language question answering
+💬 Conversational Querying
+Ask questions directly about the video content:
+
+Q: What are the benefits of RAG?
+
+A: RAG improves factual accuracy by retrieving
+relevant context from external knowledge sources
+before generating a response.
+🏗️ System Architecture
+YouTube Video
+      │
+      ▼
+Audio Download
+      │
+      ▼
+Transcription
+      │
+      ▼
+Text Processing
+      │
+      ▼
+Chunking
+      │
+      ▼
+Embeddings
+      │
+      ▼
+Vector Database
+      │
+      ▼
+Summary Generation
+      │
+      ▼
+RAG-Based Q&A
 📂 Project Structure
 VIDEO AGENT/
-│
-├── .venv/
 │
 ├── core/
 │   ├── __init__.py
@@ -24,134 +76,131 @@ VIDEO AGENT/
 │   ├── transcriber.py
 │   └── vector_store.py
 │
-├── downloads/
+├── utils/
+│   ├── __init__.py
+│   ├── app.py
+│   ├── audio_processor.py
+│   └── main.py
 │
 ├── Screenshots/
 │
-├── utils/
-│
 ├── vector_db/
 │
-├── .env
-├── .gitignore
+├── downloades/
+│
+├── test.py
 ├── README.md
-├── requirements.txt
-└── test.py
-🏗️ Workflow
-YouTube URL
-    │
-    ▼
-Audio Download
-    │
-    ▼
-Speech-to-Text
-    │
-    ▼
-Transcript Processing
-    │
-    ▼
-Chunking
-    │
-    ▼
-Embeddings
-    │
-    ▼
-Vector Database
-    │
-    ▼
-Summary Generation
-    │
-    ▼
-RAG Question Answering
-🛠️ Technologies Used
-AI & LLMs
+├── Requirements.txt
+├── .gitignore
+└── .env
+⚙️ Tech Stack
+Programming Language
+Python
+AI & LLM Frameworks
 OpenAI
 Ollama
 LangChain
 Speech Processing
-Whisper
-Sarvam AI
+OpenAI Whisper
+Sarvam AI Speech-to-Text
 Vector Database
 ChromaDB
 Embeddings
 HuggingFace Embeddings
-Language
-Python
-⚙️ Setup Instructions
+🚀 Installation
 Clone Repository
-git clone https://github.com/YOUR_USERNAME/video-agent.git
-
-cd video-agent
+git clone https://github.com/YOUR_USERNAME/VIDEO-AGENT.git
+cd VIDEO-AGENT
 Create Virtual Environment
 python -m venv .venv
 Activate Environment
-Windows:
-
+Windows
 .venv\Scripts\activate
+Linux/Mac
+source .venv/bin/activate
 Install Dependencies
-pip install -r requirements.txt
+pip install -r Requirements.txt
 🔑 Environment Variables
-Create a .env file in the project root:
+Create a .env file in the root directory.
 
 OPENAI_API_KEY=your_openai_key
 SARVAM_API_KEY=your_sarvam_key
-▶️ Running the Application
+▶️ Usage
+Update the source video URL:
+
+source = "https://www.youtube.com/watch?v=VIDEO_ID"
+language = "hinglish"
+Run:
+
 python test.py
-or whichever file is your entry point.
+or
 
-🧠 RAG Capabilities
-The application:
+python utils/main.py
+depending on your workflow.
 
-Generates transcripts.
-Splits text into semantic chunks.
-Creates embeddings.
-Stores embeddings in ChromaDB.
-Retrieves relevant context.
-Answers questions grounded in video content.
-Example:
-
-Question:
-What are the benefits of RAG?
-
-Answer:
-RAG improves factual accuracy by retrieving
-relevant information before generating a response.
 📸 Screenshots
-Add your screenshots inside the Screenshots folder and display them like:
-
 Application Workflow
-![Workflows/workflow.png
+![Workflow](Screenshots/Screenshot%202026-10-13%201# Video Processing
 
-Summary Output
-Screenshots/summary.png
+![Processing](Screenshots/Screenshot%202026-10-13
 
-RAG Q&A
-![RAG](Screenshots/rag_
-🎯 Use Cases
-Lecture Notes Generation
+Summary Generation
+![Summary](Screenshots/Screenshot%202026-10-.png
+
+RAG Question Answering
+RAG
+
+��� Use Cases
+
+Education
+Lecture Summaries
+Study Notes Generation
+Revision Material Creation
+Business
 Meeting Summaries
-Podcast Analysis
-Knowledge Retrieval
-Training Video Search
 Action Item Tracking
+Knowledge Management
+Content Analysis
+Podcast Summarization
+Webinar Insights
+Interview Analysis
+Enterprise Search
+Internal Knowledge Base
+Semantic Search
+AI Assistants
 🔒 Security
-The following are excluded from Git:
+Excluded from version control:
 
 .env
 .venv/
-downloads/
 vector_db/
+downloades/
 __pycache__/
-🚀 Future Improvements
-Streamlit/Web UI
+This prevents:
+
+API key exposure
+Large file uploads
+Generated vector database storage
+Temporary processing files
+📈 Future Enhancements
+Streamlit Web Interface
+Multi-Video Processing
 Speaker Diarization
-PDF Export
-Multi-Language Summaries
-Real-Time Processing
-Batch Video Processing
+PDF Report Generation
+Real-Time Transcription
+Multi-Language Support
+Azure OpenAI Integration
+Advanced Analytics Dashboard
 👩‍💻 Author
 Priyanshi Gupta
-
 Engineering Intern
 
-Built using Python, LangChain, ChromaDB, Whisper, Sarvam AI, OpenAI, and Ollama.
+Built with:
+
+Python
+LangChain
+ChromaDB
+Whisper
+Sarvam AI
+OpenAI
+Ollama
