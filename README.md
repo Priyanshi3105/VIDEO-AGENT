@@ -40,53 +40,37 @@ A: RAG improves factual accuracy by retrieving
 relevant context from external knowledge sources
 before generating a response.
 
-🏗️ System Architecture
-                        YouTube Video URL
-                                │
-                                ▼
-                    ┌─────────────────────┐
-                    │  audio_processor.py │
-                    │  Download Audio     │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │   transcriber.py    │
-                    │ Whisper / Sarvam STT│
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │     Transcript      │
-                    └──────────┬──────────┘
-                               │
-                ┌──────────────┼──────────────┐
-                │              │              │
-                ▼              ▼              ▼
-       ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
-       │ summarizer.py│ │ extractor.py │ │vector_store.py
-       │ Summarization│ │ Key Insights │ │ Embeddings   │
-       │              │ │ & Actions    │ │ + ChromaDB   │
-       └──────┬───────┘ └──────┬───────┘ └──────┬───────┘
-              │                │                │
-              └────────────────┼────────────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │    rag_engine.py    │
-                    │ Context Retrieval   │
-                    │ + Question Answering│
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                     Final AI Generated
-                     Results & Responses
-                     
+🔄 Workflow
+YouTube Video
+      │
+      ▼
+Audio Download
+      │
+      ▼
+Transcription
+(Whisper / Sarvam AI)
+      │
+      ▼
+Transcript Generation
+      │
+      ▼
+Chunking & Embeddings
+      │
+      ▼
+ChromaDB Vector Store
+      │
+      ├── Summary Generation
+      ├── Insight Extraction
+      ├── Action Items
+      └── RAG-based Q&A
+                 │
+                 ▼
+            Final Output
+            
 📂 Project Structure
-VIDEO AGENT/
+VIDEO AGENT
 │
 ├── core/
-│   ├── __init__.py
 │   ├── extractor.py
 │   ├── rag_engine.py
 │   ├── summarizer.py
@@ -94,22 +78,19 @@ VIDEO AGENT/
 │   └── vector_store.py
 │
 ├── utils/
-│   ├── __init__.py
 │   ├── app.py
 │   ├── audio_processor.py
 │   └── main.py
 │
 ├── Screenshots/
-│
 ├── vector_db/
-│
 ├── downloades/
 │
 ├── test.py
-├── README.md
 ├── Requirements.txt
-├── .gitignore
-└── .env
+├── README.md
+└── .gitignore
+
 ⚙️ Tech Stack
 Programming Language
 Python
@@ -124,6 +105,7 @@ Vector Database
 ChromaDB
 Embeddings
 HuggingFace Embeddings
+
 🚀 Installation
 Clone Repository
 git clone https://github.com/YOUR_USERNAME/VIDEO-AGENT.git
@@ -137,11 +119,13 @@ Linux/Mac
 source .venv/bin/activate
 Install Dependencies
 pip install -r Requirements.txt
+
 🔑 Environment Variables
 Create a .env file in the root directory.
 
 OPENAI_API_KEY=your_openai_key
 SARVAM_API_KEY=your_sarvam_key
+
 ▶️ Usage
 Update the source video URL:
 
@@ -168,7 +152,6 @@ RAG Question Answering
 RAG
 
 ��� Use Cases
-
 Education
 Lecture Summaries
 Study Notes Generation
@@ -185,6 +168,7 @@ Enterprise Search
 Internal Knowledge Base
 Semantic Search
 AI Assistants
+
 🔒 Security
 Excluded from version control:
 
@@ -199,6 +183,7 @@ API key exposure
 Large file uploads
 Generated vector database storage
 Temporary processing files
+
 📈 Future Enhancements
 Streamlit Web Interface
 Multi-Video Processing
@@ -208,6 +193,7 @@ Real-Time Transcription
 Multi-Language Support
 Azure OpenAI Integration
 Advanced Analytics Dashboard
+
 👩‍💻 Author
 Priyanshi Gupta
 Engineering Intern
