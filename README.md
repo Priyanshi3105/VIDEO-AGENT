@@ -40,39 +40,48 @@ A: RAG improves factual accuracy by retrieving
 relevant context from external knowledge sources
 before generating a response.
 
-🔄 Processing Pipeline
-YouTube URL
-    │
-    ▼
-Audio Download
-(audio_processor.py)
-    │
-    ▼
-Speech-to-Text
-(transcriber.py)
-    │
-    ▼
-Transcript
-    │
-    ▼
-Embedding Creation
-(vector_store.py)
-    │
-    ▼
-Chroma Vector Database
-    │
-    ├────────────► Summarization
-    │              (summarizer.py)
-    │
-    ├────────────► Insight Extraction
-    │              (extractor.py)
-    │
-    └────────────► Question Answering
-                   (rag_engine.py)
-
-                    ▼
-              Final Results
-              
+🏗️ System Architecture
+                        YouTube Video URL
+                                │
+                                ▼
+                    ┌─────────────────────┐
+                    │  audio_processor.py │
+                    │  Download Audio     │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   transcriber.py    │
+                    │ Whisper / Sarvam STT│
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │     Transcript      │
+                    └──────────┬──────────┘
+                               │
+                ┌──────────────┼──────────────┐
+                │              │              │
+                ▼              ▼              ▼
+       ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+       │ summarizer.py│ │ extractor.py │ │vector_store.py
+       │ Summarization│ │ Key Insights │ │ Embeddings   │
+       │              │ │ & Actions    │ │ + ChromaDB   │
+       └──────┬───────┘ └──────┬───────┘ └──────┬───────┘
+              │                │                │
+              └────────────────┼────────────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    rag_engine.py    │
+                    │ Context Retrieval   │
+                    │ + Question Answering│
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                     Final AI Generated
+                     Results & Responses
+                     
 📂 Project Structure
 VIDEO AGENT/
 │
